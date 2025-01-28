@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 const TodoItem = ({
   todo,
   onDelete,
@@ -6,13 +5,17 @@ const TodoItem = ({
 }: {
   todo: any;
   onDelete: (id: number) => void;
-  onToggle: (id: number) => void;
+  onToggle: (id: number, completed: boolean) => void;
 }) => {
   return (
-    <div className="flex justify-between items-center p-4 bg-gray-100 rounded shadow">
+    <div className={`flex justify-between items-center p-4 rounded-lg shadow-md 
+      ${todo.completed ? "bg-green-100 dark:bg-green-800" : "bg-green-100 dark:bg-gray-800"}
+      text-gray-900 dark:text-green-100`}>
       <span
-        className={`flex-1 ${todo.completed ? "line-through text-gray-500" : ""}`}
-        onClick={() => onToggle(todo.id)}
+         className={`flex-1 cursor-pointer ${
+          todo.completed ? "line-through text-gray-500 dark:text-gray-400" : ""
+        }`}
+        onClick={() => onToggle(todo.id, todo.completed)}
       >
         {todo.title}
       </span>

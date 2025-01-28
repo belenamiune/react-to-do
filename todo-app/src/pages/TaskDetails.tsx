@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { fetchTodos } from "../services/toDoApi";
